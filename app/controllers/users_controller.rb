@@ -25,7 +25,7 @@ class UsersController < ApplicationController
             session[:user_id]= @user.id 
             redirect 'products'
         else
-            redirect 'products/home'
+            redirect '/'
         end
     end
     get '/logout' do

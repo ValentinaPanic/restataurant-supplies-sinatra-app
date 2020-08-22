@@ -1,0 +1,19 @@
+<h3><%=current_user.manager_name%>, This is the list of orders for <%=current_user.restaurant_name%></h3>
+
+<p>
+
+        <ul style="list-style-type:circle">
+            <% current_user.products.group_by do |product|  %>
+            <%= product.vendor_name %><br>
+                <%= product.name%><br>
+            <%end%>
+                
+                
+                
+                
+                                       
+           
+            </ul>
+</p>
+
+<p><a href="/logout">Log Out</a></p>
