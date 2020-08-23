@@ -1,4 +1,8 @@
 <h3> Log in and start ordering!</h3>
+<% if flash[:error] %>
+<p class="error"><%= flash[:error] %></p>
+<% end %>
+
 <br>
 <form action="/login" method="POST">
   <input type="text" name="email" placeholder="Email:">

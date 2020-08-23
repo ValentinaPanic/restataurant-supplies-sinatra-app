@@ -9,10 +9,15 @@ class UsersController < ApplicationController
     end
 
     post '/signup' do
+        if params[:email].empty? || params[:manager_name].empty? || params[:restaurant_name].empty?
+            flash[:error] = "All fields must be completed" 
+            erb :'users/signup'
+        else
         @user = User.create(email: params[:email], password: params[:password], manager_name: params[:manager_name], restaurant_name: params[:restaurant_name])
-        
+        session[:user_id] = @user.id
         redirect '/login'
     end
+end
 
     get '/login' do
         erb :'users/login'
@@ -20,14 +25,12 @@ class UsersController < ApplicationController
 
     post '/login' do
         @user = User.find_by(email: params[:email])
-        
-
         if @user  && @user.authenticate(params[:password])
             session[:user_id]= @user.id 
-
             redirect "/user/#{@user.id}"
         else
-            redirect '/'
+            flash[:error] = " Those Were Invalid Credentials. Try Again!"
+            redirect '/login'
         end
         
     end

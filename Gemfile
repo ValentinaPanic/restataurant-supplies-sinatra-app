@@ -17,6 +17,7 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 
+
 group :test do
   gem 'rspec'
   gem 'capybara'
@@ -24,3 +25,5 @@ group :test do
   gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
 end
 
+
+gem "sinatra-flash", "~> 0.3.0"

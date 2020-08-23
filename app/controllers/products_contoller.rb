@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
     get '/products' do
         @products = Product.all
         erb :'products/show'
-    end
+   end
 
     get '/products/new' do    
         erb :'products/new'
