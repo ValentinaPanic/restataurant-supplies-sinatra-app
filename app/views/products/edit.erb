@@ -1,0 +1,17 @@
+<form method="post" action="/products/<%=@product.id%>">
+<input id="hidden" type="hidden" name="_method" value="patch">
+
+Name:
+<input type="text" name ="name" value="<%= @product.name %>"/>
+
+Quantity:
+
+<input type="text" name="quantity" value="<%= @product.quantity%>"/>
+
+Vendor Name:
+
+<input type="text" name="vendor_name" value="<%= @product.vendor_name%>"/>
+
+<input type="submit" value="Submit"/>
+
+</form>
