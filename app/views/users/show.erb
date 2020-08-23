@@ -1,0 +1,13 @@
+<h3> <%= current_user.manager_name %>, you are successfully logged in! </h3>
+<br>
+<br>
+<div class="nav">
+    <% if logged_in? %>
+    <a href="/products/new"> Create Order List</a><br>
+    <a href="/products"> All Products</a><br>
+    <a href="/logout"> Log Out</a>
+    <%end%>
+    </div>
+    <br>
+  
+   

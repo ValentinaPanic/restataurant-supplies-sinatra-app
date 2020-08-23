@@ -8,6 +8,7 @@ class ApplicationController < Sinatra::Base
     enable :sessions
     set :session_secret, "restaurantlife"
   end
+  
   helpers do
     def logged_in?
       !!current_user
