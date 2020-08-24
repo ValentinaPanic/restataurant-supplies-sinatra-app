@@ -10,8 +10,8 @@ class UsersController < ApplicationController
 
     post '/signup' do
         if params[:email].empty? || params[:manager_name].empty? || params[:restaurant_name].empty?
-            flash[:error] = "All fields must be completed" 
-            erb :'users/signup'
+            flash[:error] = "All fields must be completed!" 
+            redirect '/signup'
         else
         @user = User.create(email: params[:email], password: params[:password], manager_name: params[:manager_name], restaurant_name: params[:restaurant_name])
         session[:user_id] = @user.id

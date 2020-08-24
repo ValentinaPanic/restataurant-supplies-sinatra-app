@@ -1,9 +1,7 @@
-<h3>Hello <%=current_user.manager_name%>!</h3>
-
 <form action="/products/new" method="post"   
   <input type="submit" value="Continue"/>
-  <h3 class="user-product">This is <%= current_user.restaurant_name %> Order List:</h3>
-
+  <h3 class="user-product"><%=current_user.manager_name%>, this is a <%= current_user.restaurant_name %>'s  Order List!</h3>
+  <p> If you would like to make a change, just click on a product name.</p>
 <p>
     <table>
         <thead>

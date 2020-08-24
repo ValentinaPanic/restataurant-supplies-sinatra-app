@@ -36,19 +36,17 @@ class ProductsController < ApplicationController
     end
       
     patch '/products/:id' do #edit action
-
       @product = Product.find(params[:id])
-     
       @product.update(name: params[:name], quantity: params[:quantity], vendor_name: params[:vendor_name])
       @product.save
 
-      redirect to "/products/#{@product.id}"
+      redirect to "/products"
     end
 
     delete "/products/:id" do 
         @product = Product.find(params[:id])
         @product.delete
-        redirect "/user/#{current_user.id}"
+        redirect "/products"
 
     end
 

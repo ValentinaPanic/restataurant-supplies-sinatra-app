@@ -5,15 +5,15 @@
 <br>
 <a href="/products">Go Back</a>
 <br>
-
-<a href="/products/<%= @product.id %>/edit">Update The Product</a>
-
+<br>
+<a href="/products/<%= @product.id %>/edit">Edit Product</a>
 
 
 <br>
+<br>
 <form  action="/products/<%= @product.id %>" method="post">
             <input id="hidden" type="hidden" name="_method" value="delete">
-            <input  type="submit" value="Delete The Product">
+            <input  type="submit" value="Delete Product">
         </form> 
         
 <br>
