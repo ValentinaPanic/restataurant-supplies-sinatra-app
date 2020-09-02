@@ -6,48 +6,62 @@ class ProductsController < ApplicationController
     end
 
     get '/products' do
+        if logged_in?
         @products = Product.all
         erb :'products/show'
-   end
+            
+        else
+            redirect '/login'
+        end
+    end
 
+   
     get '/products/new' do    
         erb :'products/new'
     end
 
     post '/products/new' do
-        @product = Product.create(name: params[:name], quantity: params[:quantity], vendor_name: params[:vendor_name], user_id: current_user.id)
+        @product = current_user.products.build(params)
+        if @product.save
         redirect '/products'
+        else
+            redirect '/product/new'
+        end
     end
 
     get '/products/:id' do
-        @product = Product.find_by(params[:id])
-        current_user.products.map do |product|
-            @product = product
+       if logged_in?
+        @product = Product.find(params[:id])
+    
+        erb :'products/info'
+       else
+        redirect '/login'
+       
         end
-      @product.save
-        erb :'products/info'   
-        
     end
 
     get '/products/:id/edit' do  
         @product = Product.find(params[:id])
-                
+          
+        if  @product.user == current_user      
         erb :'products/edit'
+          end
     end
       
-    patch '/products/:id' do #edit action
+    patch '/products/:id' do 
       @product = Product.find(params[:id])
+      if  @product.user == current_user 
       @product.update(name: params[:name], quantity: params[:quantity], vendor_name: params[:vendor_name])
+      
       @product.save
-
-      redirect to "/products"
+      end
+      redirect to '/products'
     end
 
-    delete "/products/:id" do 
+    delete '/products/:id' do 
         @product = Product.find(params[:id])
         @product.delete
-        redirect "/products"
+        redirect '/products'
 
     end
-
 end

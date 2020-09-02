@@ -1,21 +1,7 @@
 <p>
- Are you sure that you want to make a change to <%= @product.name %>?<br>
+ Product Name: <%= @product.name %><br>
  <%= @product.vendor_name %> sells this product and you wanted <%= @product.quantity %> of them.
  </p>
 <br>
 <a href="/products">Go Back</a>
 <br>
-<br>
-<a href="/products/<%= @product.id %>/edit">Edit Product</a>
-
-
-<br>
-<br>
-<form  action="/products/<%= @product.id %>" method="post">
-            <input id="hidden" type="hidden" name="_method" value="delete">
-            <input  type="submit" value="Delete Product">
-        </form> 
-        
-<br>
-
-

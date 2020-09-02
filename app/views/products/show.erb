@@ -12,13 +12,16 @@
             </tr>
         </thead>
         <tbody>
-            <% current_user.products.each do |product| %>
+            <% @products.each do |product| %>
+                <% if product.user == current_user%>
+               
                 <tr>
-                    <td><a href="/products/<%= product.id %>"><%= product.name %></a></td>
+                    <td><a href="/products/<%= product.id%>/edit"><%= product.name %></a></td>
                     <td><%= product.quantity %></td>
                     <td><%= product.vendor_name %></td>
                 </tr>
-            <% end %>
+                <%end%>
+            <%end%>
         </tbody>
     </table>
 <br>

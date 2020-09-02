@@ -11,7 +11,15 @@ Quantity:
 Vendor Name:
 
 <input type="text" name="vendor_name" value="<%= @product.vendor_name%>"/>
-
-<input type="submit" value="Submit"/>
+<br>
+<br>
+<input type="submit" value="Edit product"/>
 
 </form>
+<br>
+<form  action="/products/<%= @product.id %>" method="post">
+            <input id="hidden" type="hidden" name="_method" value="delete">
+            <input  type="submit" value="Delete Product">
+</form> 
+<br>
+<a href="/products">Go Back</a>
